@@ -50,4 +50,8 @@ Route::post("login",[BloggerController::class, 'bloggerLogin']);
 
 Route::get ("/profile",[BloggerController::class, 'getBlogger']);
 
+Route::get ("/myPosts",[PostController::class, 'myPosts']);
+
 Route::get('fullStory/{id}',[BloggerController::class, 'showData']);
+
+Route::get('editStory/{id}',[PostController::class, 'showData']);

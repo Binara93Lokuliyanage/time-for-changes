@@ -82,6 +82,11 @@ class BloggerController extends Controller
        ->where('email', $blogger)
        ->get();
 
+       session()->put('blogger_id', $data[0]->id);
+       session()->put('firstName', $data[0]->firstName);
+       session()->put('lastName', $data[0]->lastName);
+       session()->put('nickName', $data[0]->nickName);
+
        return view('profile', compact('data'));
         } else {
             return redirect('/login');

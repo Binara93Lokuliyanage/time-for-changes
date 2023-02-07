@@ -4,36 +4,36 @@
 </head>
 
 <body>
-<div id="confirmAdd" class="modal">
-    <div class="modal-content">
-        <div class = "closeIcon" onclick="closeSubs();"><i class="fa fa-times" aria-hidden="true"></i></div>
-        <h3>නවතම කතා පැමිණි සැනින් දැනගන්න. <br> Time for Changes වෙබ් පිටුව Subscribe කරන්න</h3>
+    <div id="confirmAdd" class="modal">
+        <div class="modal-content">
+            <div class="closeIcon" onclick="closeSubs();"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <h3>නවතම කතා පැමිණි සැනින් දැනගන්න. <br> Time for Changes වෙබ් පිටුව Subscribe කරන්න</h3>
 
-        <form action="subscribe" method="POST">
-        @csrf
-        <p>ඔබේ නම</p>
-        <input type="text" name="name" placeholder="Your Name" minlength="3" maxlength="50" required><br>
-        <span style="color: red">@error('name'){{$message}}@enderror</span><br>
+            <form action="subscribe" method="POST">
+                @csrf
+                <p>ඔබේ නම</p>
+                <input type="text" name="name" placeholder="Your Name" minlength="3" maxlength="50" required><br>
+                <span style="color: red">@error('name'){{$message}}@enderror</span><br>
 
-        <p>E-mail ලිපිනය</p>
-        <input type="email" name="email" placeholder="Your Email" required><br>
-        <span style="color: red">@error('email'){{$message}}@enderror</span><br>
+                <p>E-mail ලිපිනය</p>
+                <input type="email" name="email" placeholder="Your Email" required><br>
+                <span style="color: red">@error('email'){{$message}}@enderror</span><br>
 
-        <p>උපන් දිනය</p>
-        <input type="date" name="birth_date" placeholder="Birth Day" min="1922-01-01" max="2019-12-31" required><br>
-        <span style="color: red">@error('birth_date'){{$message}}@enderror</span><br>
+                <p>උපන් දිනය</p>
+                <input type="date" name="birth_date" placeholder="Birth Day" min="1922-01-01" max="2019-12-31" required><br>
+                <span style="color: red">@error('birth_date'){{$message}}@enderror</span><br>
 
-        <button type = "submit" class="subscribeButton" class="button">Subscribe</button>
-    </form>
-    </div> 
-</div>
+                <button type="submit" class="subscribeButton" class="button">Subscribe</button>
+            </form>
+        </div>
+    </div>
 
     <div class="mainContainer">
         <div class="commonContainer" id="topContainer">
             @include('header')
             <div class="storyArea">
-                
-            <h2>නවතම කතන්දර</h2>
+
+                <h2>නවතම කතන්දර</h2>
                 <!-- <div id="slider" class="slider">
                     <div class="slider-content">
                         <div class="slider-content-wrapper">
@@ -47,25 +47,31 @@
                     </div>
                 </div> -->
                 <!-- Slideshow container -->
-<div class="slideshow-container">
+                <div class="slideshow-container">
 
-<!-- Full-width images with number and caption text -->
+                    <!-- Full-width images with number and caption text -->
 
-@foreach($collection as $col)
-<div class="mySlides fade">
-  <div class="numbertext">1 / 3</div>
-  <div class="text">" {{$col['discription']}} "</div>
-  <div class = "button" id = "readBtn"><a href="{{'fullStory/'.$col['id']}}">කියවන්න</a></div>
-</div>
-@endforeach
+                    @foreach($collection as $col)
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 3</div>
+                        <div class="text">" {{$col['discription']}} "</div>
+                        <div class="button" id="readBtn"><a href="{{'fullStory/'.$col['id']}}">කියවන්න</a></div>
+                    </div>
+                    @endforeach
 
-<!-- Next and previous buttons -->
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<br>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
 
             </div>
+            
+            <h2  style=" float: right;margin-right: 5.5%; color: #001892">
+                <a href = ""><i class="fa fa-facebook-official" aria-hidden="true" ></i></a>
+                <a href = ""><i class="fa fa-youtube-play" aria-hidden="true" style="color: #FF0000"></i></a>
+                <a href = ""><i class="fa fa-whatsapp" aria-hidden="true" style="color: #25D366"></i></a>
+            </h2>
             <div class="headingArea">
                 Time for<br><strong style="font-size: 100px;">Changes</strong>
             </div>
@@ -360,41 +366,44 @@
         dots: true
     });
 
-    function openSubs(){
+    function openSubs() {
         document.getElementById('confirmAdd').style.visibility = 'visible'
     }
-    function closeSubs(){
+
+    function closeSubs() {
         document.getElementById('confirmAdd').style.visibility = 'hidden'
     }
 
     let slideIndex = 1;
-showSlides(slideIndex);
+    showSlides(slideIndex);
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
-
-
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
 </script>
