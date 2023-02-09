@@ -55,3 +55,5 @@ Route::get ("/myPosts",[PostController::class, 'myPosts']);
 Route::get('fullStory/{id}',[BloggerController::class, 'showData']);
 
 Route::get('editStory/{id}',[PostController::class, 'showData']);
+
+Route::post('editStory/updateStory',[PostController::class, 'updateStory']);

@@ -21,7 +21,8 @@ class PostController extends Controller
 
        $data = DB::table('posts')
        ->where('blogger_id', $blogger)
-       ->get();
+       ->latest()
+       ->paginate(5);
 
        return view('myPosts', compact('data'));
         } else {
@@ -33,5 +34,29 @@ class PostController extends Controller
         $data = Post::where('id',$id)
         ->get();
         return view('editStory', ['data' => $data[0]]);
+    }
+
+    
+    function updateStory(Request $req)
+    {
+        $req->validate([
+            'id' => 'required',
+            'blogger_id' => 'required',
+            'title' => 'required|min:3|max:50',
+            'discription' => 'required|min:3|max:150',
+            'category' => 'required|min:3|max:50',
+            'story' => 'required|min:3|max:5000'
+        ]);
+
+        $story = Post::find($req->id);
+        $story->blogger_id = $req->blogger_id;
+        $story->title = $req->title;
+        $story->discription = $req->discription;
+        $story->category = $req->category;
+        $story->story = $req->story;
+
+        $story->save();
+
+        return redirect('editStory/'.$req->id)->with('message','Story updated successfully !');
     }
 }

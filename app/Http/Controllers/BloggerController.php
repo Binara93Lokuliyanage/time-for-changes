@@ -99,7 +99,7 @@ class BloggerController extends Controller
     {
         $req->validate([
             'blogger_id' => 'required',
-            'title' => 'required|min:3|max:14|unique:posts',
+            'title' => 'required|min:3|max:50|unique:posts',
             'discription' => 'required|min:3|max:150',
             'category' => 'required|min:3|max:50',
             'story' => 'required|min:3|max:5000'

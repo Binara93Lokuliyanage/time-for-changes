@@ -12,13 +12,14 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
 <body>
 @include('profileHeader')
     <div style="width: 80%; max-width: 1000px; margin: auto; text-align: center">
         <div class="title">
-            <h1 style="color: #001892">අලුත් කතාවක්</h1>
+            <h1 style="color: #001892; padding-top: 10px">අලුත් කතාවක්</h1>
         </div>
 
         <form action="addStory" method="POST">

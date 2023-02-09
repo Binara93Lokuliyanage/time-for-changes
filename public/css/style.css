@@ -97,7 +97,7 @@ a {
     width: 100%;
 }
 .profileNav p{
-    padding: 0px 20px;
+    padding: 10px 20px 0px 20px;
 }
 .logoArea {
     float: left;
@@ -230,6 +230,12 @@ a {
         bottom: unset;
         right: unset;
     }
+@media screen and (max-height: 1090px) {
+    .headingArea {
+        height: 200px;
+        font-size: 60px;
+    }
+}
 }
 
 * {
@@ -507,7 +513,7 @@ textarea {
 
 .profileHeader {
     width: 100%;
-    height: 160px;
+    height: 140px;
     background-color: #001892;
 }
 
@@ -631,7 +637,20 @@ white-space: nowrap;
     text-overflow: ellipsis;
     padding-left: 10px;
 }
-
+.pagination{
+    margin-top: 10px;
+    margin: auto;
+    width:300px;
+    padding: 10px;
+    text-align: center;
+    justify-items: center;
+}
+.w-5{
+    display:none;
+}
+.text-sm {
+    margin-bottom: 5px;
+}
 /* animations -------------------------------------------------- */
 
 @-webkit-keyframes slide {
