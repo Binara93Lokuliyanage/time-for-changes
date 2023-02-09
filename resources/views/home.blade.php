@@ -23,8 +23,15 @@
                 <input type="date" name="birth_date" placeholder="Birth Day" min="1922-01-01" max="2019-12-31" required><br>
                 <span style="color: red">@error('birth_date'){{$message}}@enderror</span><br>
 
-                <button type="submit" class="subscribeButton" class="button">Subscribe</button>
+                <button type="submit" class="subscribeButton" class="button" id="subscribeBtn" onClick="switchBtn()">Subscribe</button>
             </form>
+        </div>
+    </div>
+
+    <div id="confirmSubs" class="modal">
+        <div class="modal-content">
+            <div class="closeIcon" onclick="closeSubs();"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <h3>Subscribe කිරීම සාර්ථකයි !</h3>Time for Changes වෙබ් පිටුව හා සම්බන්ද වුවාට ස්තුතියි.<br>නව කතාවක් වෙබ් පිටුවට පැමිණි සැනින් දැන් ඔබට email මාර්ගයෙන් දැනගත හැක.<br>
         </div>
     </div>
 
@@ -82,8 +89,16 @@
 
         </div>
     </div>
+    @if(session('message'))
+        <script>
+            document.getElementById('confirmSubs').style.visibility = 'visible'
+        </script>
+    @endif
 </body>
 <script>
+    function switchBtn(){
+        document.getElementById('subscribeBtn').innerHTML = '<img src="images/loading.gif" style="width: 20px; ">';
+    }
     function setWindowSize() {
         const windowHeight = window.innerHeight;
         document.getElementById('topContainer').style.height = windowHeight + "px";
@@ -372,6 +387,11 @@
 
     function closeSubs() {
         document.getElementById('confirmAdd').style.visibility = 'hidden'
+        document.getElementById('confirmSubs').style.visibility = 'hidden'
+    }
+
+    function openSubsMsg() {
+        document.getElementById('confirmSubs').style.visibility = 'visible'
     }
 
     let slideIndex = 1;

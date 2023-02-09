@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\subscribe;
 
 class SubscriberController extends Controller
 {
@@ -26,9 +28,11 @@ class SubscriberController extends Controller
             'email' => $subscriber->email
         ];
 
+        Mail::to($subscriber->email)->send(new subscribe($data));
+
         // echo $data;
         $subscriber->save();
 
-        return redirect('/');
+        return redirect('/')->with('message','success');
     }
 }
