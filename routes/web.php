@@ -56,4 +56,12 @@ Route::get('fullStory/{id}',[BloggerController::class, 'showData']);
 
 Route::get('editStory/{id}',[PostController::class, 'showData']);
 
+Route::get('deleteStory/{id}',[PostController::class, 'delete']);
+
 Route::post('editStory/updateStory',[PostController::class, 'updateStory']);
+
+Route::get ("stories/{cat}",[PostController::class, 'showStories']);
+
+Route::get('/contact', [PostController::class, 'visitContacts']);
+
+Route::post('/contact',[PostController::class, 'contact']);

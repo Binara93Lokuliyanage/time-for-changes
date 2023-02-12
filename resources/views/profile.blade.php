@@ -12,7 +12,8 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
 </head>
 
 <body>
@@ -22,7 +23,7 @@
             <h1 style="color: #001892; padding-top: 10px">අලුත් කතාවක්</h1>
         </div>
 
-        <form action="addStory" method="POST">
+        <form action="addStory" method="POST" enctype="multipart/form-data">
             @csrf
             @foreach($data as $col)
             <input type="hidden" name="blogger_id" placeholder="blogger_id" value="{{$col->id}}"><br>
@@ -30,13 +31,22 @@
             <input type="text" name="title" placeholder="මාතෘකාව" value="{{ old('title')}}"><br>
             <span style="color: red">@error('title'){{$message}}@enderror</span><br>
 
+            <input type="file" name="img" placeholder="Image" accept="image/png, image/gif, image/jpeg"><br>
+            <span style="color: red">@error('img'){{$message}}@enderror</span><br>
+
             <input type="text" name="discription" placeholder="කෙටි සටහන" value="{{ old('discription')}}"><br>
             <span style="color: red">@error('discription'){{$message}}@enderror</span><br>
 
             <select type="text" name="category" placeholder="වර්ගීකරණය" value="{{ old('category')}}">
                 <option value="" selected disabled hidden>වර්ගීකරණය</option>
-                <option value="motivational">අභිප්රේරණාත්මක</option>
-                <option value="funny">හාස්‍යජනක</option>
+                <option value="motivational">අභිප්රේරණාත්මක ලිපි</option>
+                <option value="lifeChanging">ජීවිතය වෙනස් කරන ලිපි</option>
+                <option value="knowledge">දැනුම</option>
+                <option value="trueStory">සත්‍ය ජීවිත ලිපි</option>
+                <option value="funny">හාස්‍යජනක ලිපි</option>
+                <option value="childStory">ළමා ලිපි</option>
+                <option value="bookSummary">පොත් සාරාංශ</option>
+                <option value="religious">ආගමික ලිපි</option>
             </select><br>
             <span style="color: red">@error('category'){{$message}}@enderror</span><br>
 

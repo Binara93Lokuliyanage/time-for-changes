@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\contact;
 
 class PostController extends Controller
 {
@@ -26,7 +28,7 @@ class PostController extends Controller
 
        return view('myPosts', compact('data'));
         } else {
-            return redirect('/login');
+            return redirect('/profile');
         }
     }
 
@@ -58,5 +60,40 @@ class PostController extends Controller
         $story->save();
 
         return redirect('editStory/'.$req->id)->with('message','Story updated successfully !');
+    }
+
+
+    function showStories($cat){
+        $data = Post::where('category',$cat)
+        ->latest()
+        ->paginate(5);
+        return view('storiesPage', ['data' => $data]);
+    }
+
+    function delete($id)
+    {
+        $data = Post::find($id);
+        $data->delete();
+        return redirect('myPosts');
+    }
+
+    function visitContacts()
+    {
+        return view('contact');
+    }
+
+    function contact(Request $req)
+    {
+
+        $data = [
+            'name' => $req->name,
+            'email' => $req->email,
+            'contact' => $req->contact,
+            'message' => $req->message
+        ];
+
+        Mail::to('timeforchanges62@gmail.com')->send(new contact($data));
+
+        return redirect('/contact')->with('message','success');
     }
 }

@@ -102,12 +102,19 @@ class BloggerController extends Controller
             'title' => 'required|min:3|max:50|unique:posts',
             'discription' => 'required|min:3|max:150',
             'category' => 'required|min:3|max:50',
+            'img' => 'required',
             'story' => 'required|min:3|max:5000'
         ]);
+
+        $destination = 'public/images';
+        $image = $req->file('img');
+        $image_name = $image->getClientOriginalName();
+        $image_url = $req->file('img')->storeAs($destination, $image_name);
 
         $story = new Post;
         $story->blogger_id = $req->blogger_id;
         $story->title = $req->title;
+        $story->image = $image_name;
         $story->discription = $req->discription;
         $story->category = $req->category;
         $story->story = $req->story;

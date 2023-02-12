@@ -97,7 +97,7 @@ a {
     width: 100%;
 }
 .profileNav p{
-    padding: 10px 20px 0px 20px;
+    padding: 0px 20px 0px 20px;
 }
 .logoArea {
     float: left;
@@ -222,21 +222,21 @@ a {
     }
 }
 
-@media only screen and (max-width: 940px) {
-    .headingArea {
-        width: 100%;
-        height: 400px;
-        position: relative;
-        bottom: unset;
-        right: unset;
-    }
+
 @media screen and (max-height: 1090px) {
     .headingArea {
         height: 200px;
         font-size: 60px;
     }
 }
+@media screen and (max-height: 352px) {
+    .headingArea {
+        width: 90%;
+        font-size: 40px;
+        display: none;
+    }
 }
+
 
 * {
     box-sizing: border-box
@@ -411,7 +411,8 @@ a {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
+    width: 80%;
+    max-width: 800px;
     color: #676767;
     font-weight: bold;
     text-align: center;
@@ -470,6 +471,8 @@ input[type=password],
 input[type=number],
 input[type=date],
 input[type=email],
+input[type=file],
+input[type=tel],
 select {
     width: 80%;
     padding: 10px 15px;
@@ -513,7 +516,7 @@ textarea {
 
 .profileHeader {
     width: 100%;
-    height: 140px;
+    height: 160px;
     background-color: #001892;
 }
 
@@ -574,7 +577,7 @@ textarea {
     margin: auto;
     width: 100%;
     padding: 20px 0px 0px 0px;
-    font-size: 24px;
+    font-size: 36px;
     text-align: Center;
     color: #001892;
 }
@@ -583,7 +586,7 @@ textarea {
     margin: auto;
     width: 80%;
     padding: 10px 0px;
-    font-size: 16px;
+    font-size: 24px;
     text-align: center;
     color: #00924e;
 }
@@ -592,7 +595,7 @@ textarea {
     margin: auto;
     width: 80%;
     padding: 10px 10px;
-    font-size: 16px;
+    font-size: 24px;
     text-align: left;
     border: 2px solid rgba(0, 148, 44, 0.5);
     background-color: white;
@@ -640,7 +643,7 @@ white-space: nowrap;
 .pagination{
     margin-top: 10px;
     margin: auto;
-    width:300px;
+    width:450px;
     padding: 10px;
     text-align: center;
     justify-items: center;
@@ -651,6 +654,45 @@ white-space: nowrap;
 .text-sm {
     margin-bottom: 5px;
 }
+.categoryCard{
+    width: 90%;
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 10px;
+    color: #001892;
+    cursor: pointer;
+}
+.categoryCard:hover{
+    background-color: #4CAF50;
+    color: #ffffff;
+}
+.page-item {
+    display: inline-block;
+    padding: 5px 10px;
+
+  }
+ .page-item.active{
+    background-color: #4CAF50;
+ } 
+ .storyImage{
+    margin: auto;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+ }
+ .contactForm{
+    width: 60%;
+    min-width: 300px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    background-color: white;
+ }
+  
 /* animations -------------------------------------------------- */
 
 @-webkit-keyframes slide {

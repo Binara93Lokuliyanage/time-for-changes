@@ -1,46 +1,20 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
 </head>
 
 <body>
-    <div id="confirmAdd" class="modal">
-        <div class="modal-content">
-            <div class="closeIcon" onclick="closeSubs();"><i class="fa fa-times" aria-hidden="true"></i></div>
-            <h3>නවතම කතා පැමිණි සැනින් දැනගන්න. <br> Time for Changes වෙබ් පිටුව Subscribe කරන්න</h3>
+    
 
-            <form action="subscribe" method="POST">
-                @csrf
-                <p>ඔබේ නම</p>
-                <input type="text" name="name" placeholder="Your Name" minlength="3" maxlength="50" required><br>
-                <span style="color: red">@error('name'){{$message}}@enderror</span><br>
-
-                <p>E-mail ලිපිනය</p>
-                <input type="email" name="email" placeholder="Your Email" required><br>
-                <span style="color: red">@error('email'){{$message}}@enderror</span><br>
-
-                <p>උපන් දිනය</p>
-                <input type="date" name="birth_date" placeholder="Birth Day" min="1922-01-01" max="2019-12-31" required><br>
-                <span style="color: red">@error('birth_date'){{$message}}@enderror</span><br>
-
-                <button type="submit" class="subscribeButton" class="button" id="subscribeBtn" onClick="switchBtn()">Subscribe</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="confirmSubs" class="modal">
-        <div class="modal-content">
-            <div class="closeIcon" onclick="closeSubs();"><i class="fa fa-times" aria-hidden="true"></i></div>
-            <h3>Subscribe කිරීම සාර්ථකයි !</h3>Time for Changes වෙබ් පිටුව හා සම්බන්ද වුවාට ස්තුතියි.<br>නව කතාවක් වෙබ් පිටුවට පැමිණි සැනින් දැන් ඔබට email මාර්ගයෙන් දැනගත හැක.<br>
-        </div>
-    </div>
+    
 
     <div class="mainContainer">
         <div class="commonContainer" id="topContainer">
             @include('header')
             <div class="storyArea">
 
-                <h2>නවතම කතන්දර</h2>
+                <h2>නවතම ලිපි</h2>
                 <!-- <div id="slider" class="slider">
                     <div class="slider-content">
                         <div class="slider-content-wrapper">
@@ -381,14 +355,7 @@
         dots: true
     });
 
-    function openSubs() {
-        document.getElementById('confirmAdd').style.visibility = 'visible'
-    }
-
-    function closeSubs() {
-        document.getElementById('confirmAdd').style.visibility = 'hidden'
-        document.getElementById('confirmSubs').style.visibility = 'hidden'
-    }
+    
 
     function openSubsMsg() {
         document.getElementById('confirmSubs').style.visibility = 'visible'
