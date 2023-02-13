@@ -49,9 +49,9 @@
             </div>
             
             <h2  style=" float: right;margin-right: 5.5%; color: #001892">
-                <a href = ""><i class="fa fa-facebook-official" aria-hidden="true" ></i></a>
-                <a href = ""><i class="fa fa-youtube-play" aria-hidden="true" style="color: #FF0000"></i></a>
-                <a href = ""><i class="fa fa-whatsapp" aria-hidden="true" style="color: #25D366"></i></a>
+                <a href = "https://www.facebook.com/profile.php?id=100089878749319&mibextid=ZbWKwL" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                <a href = "https://youtube.com/@timeforchanges" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true" style="color: #FF0000" ></i></a>
+                <a href = "https://wa.me/+94766116239/?text=Hello, Time for Changes" target="_blank"><i class="fa fa-whatsapp" aria-hidden="true" style="color: #25D366" ></i></a>
             </h2>
             <div class="headingArea">
                 Time for<br><strong style="font-size: 100px;">Changes</strong>
