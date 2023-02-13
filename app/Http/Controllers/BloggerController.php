@@ -86,6 +86,7 @@ class BloggerController extends Controller
        session()->put('firstName', $data[0]->firstName);
        session()->put('lastName', $data[0]->lastName);
        session()->put('nickName', $data[0]->nickName);
+       session()->put('city', $data[0]->city);
 
        return view('profile', compact('data'));
         } else {
@@ -129,5 +130,62 @@ class BloggerController extends Controller
         ->where('id',$id)
         ->get();
         return view('fullStory', ['data' => $data[0]]);
+    }
+
+    function updateAccount(Request $req){
+        $req->validate([
+            'firstName' => 'required|min:3|max:14',
+            'lastName' => 'required|min:3|max:14',
+            'nickName' => 'required|min:3|max:14',
+            'city' => 'required|min:3|max:50',
+            'email' => 'required|email:strict|unique:users'
+        ]);
+
+        $blogger = Blogger::find($req->id);
+        $blogger->firstName = $req->firstName;
+        $blogger->lastName = $req->lastName;
+        $blogger->nickName = $req->nickName;
+        $blogger->city = $req->city;
+        $blogger->email = $req->email;
+
+        $blogger->save();
+
+        session()->put('firstName', $blogger->firstName);
+        session()->put('lastName', $blogger->lastName);
+        session()->put('nickName', $blogger->nickName);
+        session()->put('city', $blogger->city);
+        session()->put('email', $blogger->email);
+
+        return redirect('profile');
+    }
+
+    function forgotPw(Request $req){
+        $req->validate([
+            'email' => 'required|email:strict|unique:users',
+            'password' => ['required','confirmed','max:14',
+                            Password::min(6) 
+                            ->letters()
+                            ->mixedCase()
+                            ->numbers()
+                            ->symbols()]
+        ]);
+
+        $pw = $req['password'];
+        $encrypted = crypt::encryptString($pw);
+
+        $data = DB::table('bloggers')
+        ->where('email',$req['email'])
+        ->get();
+
+        if (count($data) == 0) {
+            return redirect('forgotPw')->withInput()->withErrors(['email' => 'Email is incorrect']);
+        } else {
+            $blogger = Blogger::find($data[0]->id);
+            $blogger->password = $encrypted;
+
+            $blogger->save();
+
+            return redirect('login')->with('message','Password reset is successful !');
+        }
     }
 }

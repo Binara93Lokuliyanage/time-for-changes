@@ -75,7 +75,7 @@
                 </button>
                 <div class="dropdown-content">
                     <a href="{{'/'}}" style="border-left: 1px solid; font-size: 20px;"><i class="fa fa-home" aria-hidden="true"></i></a>
-                    <a href="#">විස්තර</a>
+                    <a href="{{'/about'}}">විස්තර</a>
                     <a onClick="openCatList()" style="cursor:pointer">වර්ගීකරණය</a>
                     <a href="{{'/contact'}}">අමතන්න</a>
                 </div>
@@ -84,7 +84,7 @@
         <div class="navContents">
 
             <a href="{{'/'}}" style="border-left: 1px solid; font-size: 20px;"><i class="fa fa-home" aria-hidden="true"></i></a>
-            <a href="#">විස්තර</a>
+            <a href="{{'/about'}}">විස්තර</a>
             <a onClick="openCatList()" style="cursor:pointer">වර්ගීකරණය</a>
             <a href="{{'/contact'}}">අමතන්න</a>
         </div>

@@ -3,25 +3,31 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
 </head>
+
 <body>
-    <div class = "registerBox">
-    <div class="title">
-        <h1 style="color: #001892">BLOGGER LOGIN</h1>
+    <div class="registerBox">
+        <div class="title">
+            <h1 style="color: #001892">BLOGGER LOGIN</h1>
+        </div>
+
+        <form action="login" method="POST">
+            @csrf
+            <input type="text" name="email" placeholder="Email" value="{{ old('email')}}"><br>
+            <span style="color: red">@error('email'){{$message}}@enderror</span><br>
+
+            <input type="password" name="password" placeholder="Password"><br>
+            <span style="color: red">@error('password'){{$message}}@enderror</span><br>
+
+            <button type="submit" class="subscribeButton"><strong>LOGIN</strong></button>
+
+            <p><a href="{{'/forgotPw'}}">Forgot password?</a></p>
+        </form>
     </div>
+    @if(session('message'))
+    <div class="successMsg">{{session('message')}}</div>
+    @endif
 
-    <form action="login" method="POST">
-        @csrf
-        <input type="text" name="email" placeholder="Email" value = "{{ old('email')}}"><br>
-        <span style="color: red">@error('email'){{$message}}@enderror</span><br>
-
-        <input type="password" name="password" placeholder="Password"><br>
-        <span style="color: red">@error('password'){{$message}}@enderror</span><br>
-
-        <button type="submit" class = "subscribeButton"><strong>LOGIN</strong></button>
-    </form>
-</div>
-    
 </body>
 <style>
-    
+
 </style>

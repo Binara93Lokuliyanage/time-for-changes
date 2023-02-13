@@ -65,3 +65,15 @@ Route::get ("stories/{cat}",[PostController::class, 'showStories']);
 Route::get('/contact', [PostController::class, 'visitContacts']);
 
 Route::post('/contact',[PostController::class, 'contact']);
+
+Route::post('/updateAccount',[BloggerController::class, 'updateAccount']);
+
+Route::post('/forgotPw',[BloggerController::class, 'forgotPw']);
+
+Route::get('/forgotPw', function(){
+    return view('forgotPw');
+});
+
+Route::get('/about', function(){
+    return view('about');
+});

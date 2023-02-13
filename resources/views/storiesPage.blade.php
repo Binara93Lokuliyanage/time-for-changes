@@ -14,13 +14,25 @@
         @foreach($data as $col)
         <div class="storyCard">
             <div class="sCardCat">
-                @if ($col->category == 'motivational')
-                අභිප්රේරණාත්මක
-                @elseif ($col->category == 'funny')
-                හාස්‍යජනක
-                @else
-                වෙනත්
-                @endif
+            @if ($col->category == 'motivational')
+            අභිප්රේරණාත්මක
+            @elseif ($col->category == 'lifeChanging')
+            ජීවිතය වෙනස් කරන ලිපි
+            @elseif ($col->category == 'knowledge')
+            දැනුම
+            @elseif ($col->category == 'trueStory')
+            සත්‍ය ජීවිත ලිපි
+            @elseif ($col->category == 'funny')
+            හාස්‍යජනක ලිපි
+            @elseif ($col->category == 'childStory')
+            ළමා ලිපි
+            @elseif ($col->category == 'bookSummary')
+            පොත් සාරාංශ
+            @elseif ($col->category == 'religious')
+            ආගමික ලිපි
+            @else
+            වෙනත්
+            @endif
                 <a href="{{'../fullStory/'.$col->id}}">
 
                     <i class="fa fa-book" aria-hidden="true" style="float: right; margin-right: 10px; cursor: pointer; color: #001892"></i>
